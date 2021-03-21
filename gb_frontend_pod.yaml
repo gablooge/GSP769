@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: gb-frontend
+  name: gb-frontend
+spec:
+    containers:
+    - name: gb-frontend
+      image: gcr.io/google-samples/gb-frontend:v5
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+      ports:
+      - containerPort: 80

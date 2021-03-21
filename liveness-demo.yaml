@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    demo: liveness-probe
+  name: liveness-demo-pod
+spec:
+  containers:
+  - name: liveness-demo-pod
+    image: centos
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/alive; sleep infinity
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/alive
+      initialDelaySeconds: 5
+      periodSeconds: 10

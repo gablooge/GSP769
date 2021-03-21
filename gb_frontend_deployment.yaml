@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gb-frontend
+  labels:
+    run: gb-frontend
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      run: gb-frontend
+  template:
+    metadata:
+      labels:
+        run: gb-frontend
+    spec:
+      containers:
+        - name: gb-frontend
+          image: gcr.io/google-samples/gb-frontend:v5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: 80
+              protocol: TCP
